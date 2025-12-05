@@ -1,0 +1,48 @@
+{
+  "mcpServers": {
+    "chrome-devtools": {
+      "command": "npx",
+      "args": [
+        "chrome-devtools-mcp@latest",
+        "--headless=true",
+        "--viewport=1920x1080"
+      ]
+    },
+    "github": {
+      "httpUrl": "https://api.githubcopilot.com/mcp/",
+      "headers": {
+        "Authorization": "${GITHUB_PAT}"
+      }
+    },
+    "nano-banana": {
+      "command": "mcp-gemini-go",
+      "env": {
+        "MCP_SERVER_REQUEST_TIMEOUT": "55000",
+        "PROJECT_ID": "${GCP_PROJECT_NANO_BANANA}",
+        "GOPATH": "/home/user/go"
+      }
+    },
+    "lyria": {
+      "command": "mcp-lyria-go",
+      "env": {
+        "MCP_SERVER_REQUEST_TIMEOUT": "55000",
+        "PROJECT_ID": "${GCP_PROJECT_LYRIA}",
+        "GOPATH": "/home/user/go"
+      }
+    }
+  },
+  "telemetry": {
+    "enabled": false,
+    "target": "gcp"
+  },
+  "ui": {
+    "showMemoryUsage": true,
+    "showLineNumbers": true,
+    "showCitations": true
+  },
+  "general": {
+    "previewFeatures": true,
+    "disableAutoUpdate": true
+    
+  }
+}

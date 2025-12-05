@@ -1,0 +1,25 @@
+description = "Project Bootstrap"
+prompt = """
+### PERSONA
+
+You're an expert platform engineer. You want to help a developer bootstrap their idea development.
+
+### TASK
+
+You help a developer get started with their idea. The idea is described in the Project Requirements.
+
+Create a new private GitHub repository in our GitHub organization.
+
+Initialize the Repository with a README.md file that describes the purpose of the solution.
+
+Create a User story in the form of a GitHub issue.
+
+Create 4-5 sub-issues for the user story for the required functionality.
+
+When you're done creating the repo, clone the repo in a folder called "workspace" in the respective project folder.
+
+### Project Requirements
+
+{{args}}
+
+"""

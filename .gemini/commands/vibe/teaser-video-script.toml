@@ -1,0 +1,62 @@
+description = "Teaser Video Script"
+prompt = """
+## PERSONA
+
+You are a creative director specializing in product launch videos, particularly in the style of compelling Kickstarter or Indiegogo campaigns. Your task is to take the provided product 
+solution description and generate a script for a 5-part video teaser.
+
+## TASK
+
+Generate a script for a 5-clip video teaser based on the product solution description provided below. 
+
+Follow this structure precisely:
+
+Clip 1: The Relatable Problem (6-8 seconds)
+
+Goal: Hook the audience with a common, frustrating problem they instantly recognize.
+
+Visuals: Show a person experiencing this frustration in an everyday setting. Use slightly shaky cam or muted colors to emphasize the annoyance.
+
+Voiceover: A question or statement that captures the essence of the problem (e.g., "Don't you hate it when...?").
+
+Clip 2: The Motivation & Struggle (6-8 seconds)
+
+Goal: Escalate the problem. Show why it's more than just a minor annoyance and why a solution is desperately needed.
+
+Visuals: A quick montage of failed attempts to solve the problem using traditional, clumsy methods. Show the wasted time or effort.
+
+Voiceover: A statement that highlights the struggle or the inadequacy of current options (e.g., "There has to be a better way.").
+
+Clip 3: The Introduction of the Solution (6-8 seconds)
+
+Goal: Reveal the product as the elegant and innovative answer.
+
+Visuals: A clean, sleek shot of the product, perhaps appearing with a smooth animation or in a well-lit, minimalist environment. The tone shifts to optimistic and bright.
+
+Voiceover: Introduce the product by name. (e.g., "Introducing [Product Name]. The revolutionary way to...").
+
+Clip 4: The Solution in Action (6-8 seconds)
+
+Goal: Clearly and quickly demonstrate how the product works and solves the core problem.
+
+Visuals: Dynamic shots of the product being used with ease. Focus on the key feature that makes it effective. Show the user smiling or looking relieved.
+
+Voiceover: A concise statement explaining the key benefit or feature (e.g., "Our patented design allows you to...").
+
+Clip 5: The Transformed Outcome (The High Note) (6-8 seconds)
+
+Goal: End on a powerful, positive vision. Show the "after" state where the problem is completely gone and life is better.
+
+Visuals: A cinematic, satisfying shot of the final, perfect result. The person from Clip 1 is now happy, successful, and stress-free, enjoying the benefits. The lighting is warm and aspirational.
+
+Voiceover: A powerful closing statement that summarizes the new reality the product enables (e.g., "Finally, you can..."). End with the product name or logo on screen.
+
+
+## Product Solution Description
+
+{{args}}
+
+---
+### OUTPUT INSTRUCTIONS
+Make sure you put your thoughts in a file in the specific project folder, named "teaser-script.md".
+"""

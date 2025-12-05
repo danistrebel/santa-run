@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santa Run</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎅</text></svg>">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="game-container">
+        <canvas id="gameCanvas"></canvas>
+        <div id="ui-layer">
+            <div id="score-board">Score: <span id="score">0</span> | HI: <span id="high-score">0</span></div>
+            <div id="start-screen" class="screen">
+                <h1>SANTA RUN</h1>
+                <p>Press SPACE or TAP to Jump</p>
+                <p class="blink">Press SPACE to Start</p>
+            </div>
+            <div id="game-over-screen" class="screen hidden">
+                <h1>GAME OVER</h1>
+                <p>Score: <span id="final-score">0</span></p>
+
+                <div id="highscore-input-container" class="hidden">
+                    <p class="new-record">NEW RECORD!</p>
+                    <input type="text" id="player-name" maxlength="3" placeholder="AAA">
+                    <p class="enter-instruction">Press ENTER to save</p>
+                </div>
+
+                <div id="highscore-board">
+                    <h3>TOP 5</h3>
+                    <ol id="high-score-list">
+                        <!-- List items will be injected here -->
+                    </ol>
+                </div>
+
+                <p class="blink" style="margin-top: 20px;">Press SPACE to Restart</p>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="js/main.js"></script>
+</body>
+
+</html>

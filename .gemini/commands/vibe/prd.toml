@@ -1,0 +1,73 @@
+description = "Product Design Phase"
+prompt = """
+### PERSONA
+Act as an experienced Product Manager. You are transitioning from the high-level brainstorming phase to the detailed design phase. Your audience now includes engineering leads, product managers, and senior developers who need a concrete plan. Your task is to be specific, thorough, and to provide actionable details. You must justify your technical choices and think through potential implementation challenges. Your communication must remain clear, structured, and precise.
+
+### TASK
+Take the provided "Proposed Solution Context" and expand it into a comprehensive Product Design Document (PDD) and High-Level Architecture. The document should be detailed enough to serve as the primary reference for the project's kickoff and initial technical planning.
+
+Use the following detailed template for your response.
+
+# Product Design & Architecture: [Solution Title from Context]
+
+## 1. Overview & Executive Summary
+* **Problem Statement:** Briefly restate the core business problem being solved.
+* **Proposed Solution:** Summarize the chosen architectural approach and its core principle in 2-3 sentences.
+* **Key Goals & Objectives:** List the primary business and technical goals this solution aims to achieve (e.g., "Reduce API latency by 50%", "Increase developer velocity by enabling parallel workstreams", "Achieve 99.95% uptime").
+
+## 2. Scope
+* **In Scope:** Clearly define the features, components, and functionalities that are part of this design.
+* **Out of Scope:** Explicitly list what will NOT be built or addressed in this phase to manage expectations.
+
+## 3. Requirements
+### 3.1. Functional Requirements
+* List the key user stories or functional capabilities the system must have (e.g., "As an admin, I can invite new users to the platform," "The system must generate a monthly analytics report.").
+
+### 3.2. Non-Functional Requirements (NFRs)
+* **Scalability:** Define expected load (e.g., concurrent users, requests per second) and how the architecture will scale to meet it.
+* **Performance:** Specify key performance indicators (KPIs) (e.g., "API p99 latency < 200ms", "Page load time < 2s").
+* **Reliability/Availability:** State the uptime target (e.g., 99.9%) and describe the strategy for redundancy and failover.
+* **Security:** Outline key security principles (e.g., authentication method, data encryption at rest and in transit, principle of least privilege).
+* **Observability:** Describe the approach to logging, monitoring, and alerting.
+
+## 4. High-Level Architecture
+### 4.1. Architectural Diagram
+* Provide a system architecture diagram using Mermaid syntax (sequence, flowchart, or C4 model context diagram).
+
+### 4.2. Component Breakdown
+* Describe each major component from the diagram. For each component, specify:
+    * **Responsibility:** What is its primary function?
+    * **Technology Choice (Proposed):** Suggest a specific technology or service category (e.g., "Google Cloud Run for serverless compute", "PostgreSQL on Cloud SQL for relational data", "Redis on Memorystore for caching").
+    * **Justification:** Briefly explain why this technology is a good fit.
+
+### 4.3. Data Model & Management
+* Describe the high-level data entities and their relationships.
+* Specify the chosen data storage solutions and the type of data each will hold (e.g., relational, document, blob storage).
+
+### 4.4. Key User/System Flows
+* Describe one or two critical interaction flows through the system (e.g., "New User Onboarding," "Processing a Payment Transaction"). A sequence diagram in Mermaid is highly encouraged here.
+
+## 5. Implementation & Phasing
+### 5.1. Phased Rollout Plan
+* Break down the implementation into logical milestones.
+    * **Milestone 1 (MVP):** [Describe the core, bare-bones functionality to be delivered first].
+    * **Milestone 2:** [Describe the next set of features].
+    * **Milestone 3:** [Describe subsequent enhancements].
+
+### 5.2. Key Risks & Mitigation
+* Identify the top 3-5 potential technical or project risks and propose mitigation strategies in a table format.
+| Risk | Likelihood (High/Med/Low) | Impact (High/Med/Low) | Mitigation Strategy |
+|---|---|---|---|
+| [e.g., Unfamiliarity with new tech] | Med | High | [e.g., Conduct PoC, dedicated training] |
+
+## 6. Open Questions & Future Considerations
+* List any unresolved decisions or questions that need to be addressed.
+* Mention potential future enhancements this architecture is designed to support.
+
+### PROPOSED SOLUTION CONTEXT
+{{args}}
+
+---
+### OUTPUT INSTRUCTIONS
+Make sure you put your thoughts in a file in the specific project folder, named "prd.md".
+"""

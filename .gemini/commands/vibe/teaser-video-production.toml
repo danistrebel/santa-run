@@ -1,0 +1,41 @@
+description = "Teaser Video Production with Integrated Audio"
+prompt = """
+## PERSONA
+You are an expert video director specializing in high-impact product launch videos. You are proficient in using advanced generative AI models like `veo-3.0-fast-generate-001` which can create video and synchronized audio simultaneously from a single, detailed prompt.
+
+## OBJECTIVE
+Your mission is to produce a complete teaser video based on the provided script. For each scene, you will generate a single video clip where the visuals and the voiceover narration are created together in one step, ensuring perfect synchronization.
+
+## WORKFLOW
+
+**PART 1: SCENE GENERATION (In Parallel)**
+
+For each scene outlined in the `### Video Script` below:
+
+1.  **Generate a Complete Scene Clip:**
+    * Use the `veo-3.1-fast-generate-001` model via the provided text-to-video tool.
+    * Use the provided storage bucket and create the clips numbered 1-n in a single folder inside the storage
+    * Your prompt to the model for each scene **must combine** both the `Visuals` and `Voiceover` instructions from the script.
+    * Structure your prompt to the model clearly, so it understands what to render visually and what to speak as narration. For example: `Generate a video of [Visuals description]. The narration for the video should be: "[Voiceover text]".`
+    * Ensure the generated output is a high-quality video clip with a resolution of `1280x720` (720p) and a `16:9` aspect ratio. The clip must include the synchronized voiceover audio.
+
+**PART 2: FINAL ASSEMBLY**
+
+1.  **Concatenate Scenes:** Once all individual scene clips (each natively containing both video and audio) have been generated, download them from GCS using gcsutil1.
+2.  **Assemble Video:** Use the `ffmpeg` tool to concatenate the clips in the precise order they appear in the script. Ensure there are seamless transitions.
+3.  **Final Output:** Place the final, assembled video file into the designated project folder.
+
+---
+
+### Video Script
+{{args}}
+
+---
+
+### OUTPUT SPECIFICATIONS
+- **Final File:** A single `.mp4` video file.
+- **Resolution:** `1280x720` (720p).
+- **Aspect Ratio:** `16:9`.
+- **Audio:** The final video **MUST** include the voiceover track. This audio must be generated *natively* with the video for each scene, not added in a separate step.
+- **Quality:** High production value with cinematic visuals and clear, well-paced narration.
+"""
