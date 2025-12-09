@@ -122,7 +122,13 @@ export class Game {
         if (this.scoreManager.isHighScore(this.scoreManager.getScore())) {
             this.inputContainer.classList.remove('hidden');
             const nameInput = document.getElementById('player-name');
-            nameInput.value = '';
+            // get player name from session storage
+            const storedName = sessionStorage.getItem('santaRunPlayerName');
+            if (storedName) {
+                nameInput.value = storedName;
+            } else {
+                nameInput.value = '';
+            }
             setTimeout(() => nameInput.focus(), 100);
         }
         this.scoreManager.updateList();
@@ -130,6 +136,7 @@ export class Game {
 
     saveHighScore() {
         const nameInput = document.getElementById('player-name');
+        sessionStorage.setItem('santaRunPlayerName', nameInput.value);
         this.scoreManager.saveHighScore(nameInput.value, this.scoreManager.score);
         this.inputContainer.classList.add('hidden');
     }
