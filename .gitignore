@@ -3,3 +3,4 @@
 teaser_videos
 *.mp4
 gha-creds-*.json
+.gemini/
