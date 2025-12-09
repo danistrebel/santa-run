@@ -34,6 +34,11 @@ export class Game {
         this.obstacleImg = new Image();
         this.bgImg = new Image();
         
+        // Audio
+        this.bgm = new Audio('assets/bgm.wav');
+        this.bgm.loop = true;
+        this.bgm.volume = 0.5;
+
         this.processedSanta = null;
         this.processedObstacles = null;
 
@@ -80,6 +85,7 @@ export class Game {
     start() {
         this.isPlaying = true;
         this.startScreen.classList.add('hidden');
+        this.bgm.play().catch(e => console.log("Audio play failed: ", e));
         this.loop();
     }
 
@@ -96,6 +102,8 @@ export class Game {
         this.startScreen.classList.add('hidden');
         this.inputContainer.classList.add('hidden');
         
+        this.bgm.currentTime = 0;
+        this.bgm.play().catch(e => console.log("Audio play failed: ", e));
         this.loop();
     }
 
@@ -115,6 +123,7 @@ export class Game {
     gameOver() {
         this.isGameOver = true;
         this.isPlaying = false;
+        this.bgm.pause();
         this.gameOverTime = Date.now();
         this.gameOverScreen.classList.remove('hidden');
         this.scoreManager.finalScoreEl.innerText = this.scoreManager.getScore();

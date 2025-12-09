@@ -72,6 +72,52 @@ santa-run/
 └── README.md           # This file
 ```
 
+## 🧩 Game Controller Logic
+
+```mermaid
+graph TD
+    %% Initialization
+    NewGame[new Game()] --> LoadAssets[Load Assets]
+    LoadAssets -->|All Loaded| InitEntities[Init Entities]
+    InitEntities --> InitialDraw[Initial Draw]
+    InitialDraw --> IdleState(Idle State)
+
+    %% Input Handling
+    IdleState -->|Input Event| InputHandler((InputHandler))
+    InputHandler -->|Call| HandleInput[Game.handleInput()]
+
+    HandleInput -->|!isPlaying & !isGameOver| StartGame[Start Game]
+    HandleInput -->|isPlaying| SantaJump[Santa Jump]
+    HandleInput -->|isGameOver & Delay Passed| ResetGame[Reset Game]
+
+    StartGame --> GameLoop
+    ResetGame --> GameLoop
+
+    %% Game Loop
+    subgraph Game Loop
+        GameLoop --> ClearCanvas[Clear Canvas]
+        ClearCanvas --> UpdateState[Update Score & Speed]
+        UpdateState --> UpdateBg[Update Background]
+        UpdateBg --> UpdateSanta[Update Santa]
+        UpdateSanta --> SpawnObs[Spawn Obstacles]
+        SpawnObs --> UpdateObs[Update Obstacles]
+        UpdateObs --> CheckCol{Collision?}
+    end
+
+    CheckCol -->|No| DrawAll[Draw All Entities]
+    DrawAll -->|RequestAnimationFrame| GameLoop
+    CheckCol -->|Yes| GameOver[Game Over]
+
+    %% Game Over
+    GameOver --> StopMusic[Pause Music]
+    StopMusic --> ShowGOScreen[Show Game Over Screen]
+    ShowGOScreen --> CheckHigh{High Score?}
+    CheckHigh -->|Yes| ShowNameInput[Show Name Input]
+    CheckHigh -->|No| IdleState
+    ShowNameInput --> SaveScore[Save Score]
+    SaveScore --> IdleState
+```
+
 ## 🎄 Game Mechanics
 
 - **Gravity**: 0.6 pixels/frame²
